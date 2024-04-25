@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- internal css -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    </style>
+</head>
+
+<body>
+
+    <special-header></special-header>
+
+    <div class="container mt-4 ">
+        <div class="row justify-content-center text-center">
+            <div class="col-6">
+                <!-- Image -->
+                <!-- <div class="text-center">
+                            <img src="image/klogo.png" class="border-3  rounded-5 shadow " alt="Name Image"
+                                style="height: 30%; width: 30%;">
+                        </div> -->
+
+                <form id="profilefrm" class="mt-5">
+
+                    <!-- RegisterNumber -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Register Number</span>
+                            <input type="text" class="form-control col" id="regno" disabled>
+                        </div>
+                    </div>
+
+
+                    <!-- Name -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Name</span>
+                            <input type="text" class="form-control col" id="name" disabled>
+                        </div>
+                    </div>
+
+                    <!-- department -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Department</span>
+                            <input type="text" class="form-control col" id="dpmt" disabled>
+                        </div>
+                    </div>
+
+                    <!-- year -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Year</span>
+                            <input type="text" class="form-control col" id="year" disabled>
+                        </div>
+                    </div>
+
+                    <!-- section -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Section</span>
+                            <input type="text" class="form-control col" id="sec" disabled>
+                        </div>
+                    </div>
+
+                    <!-- semester -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">semester</span>
+                            <input type="text" class="form-control col" id="semester" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Academic year -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Academic Year</span>
+                            <input type="text" class="form-control col" id="academicYear" disabled>
+                        </div>
+                    </div>
+
+                    <!-- mentor name -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Mentor Name</span>
+                            <input type="text" class="form-control col" id="mentor" disabled>
+                        </div>
+                    </div>
+
+                    <!-- email -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Email</span>
+                            <input type="text" class="form-control col" id="email" disabled>
+                        </div>
+                    </div>
+
+                    <!-- mobile -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Phone</span>
+                            <input type="text" class="form-control col" id="phone" disabled>
+                        </div>
+                    </div>
+
+                    <!-- points claimed -->
+                    <div class="form-group row shadow p-2 pe-5 mb-3 bg-white rounded">
+                        <div class="input-group row m-3">
+                            <span class="input-group-text col">Points Claimed</span>
+                            <input type="text" class="form-control col" id="claimed" disabled>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <br>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+    <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener('load', (event) => {
+            var userDataJSON = getCookie('userData');
+
+            var userData = JSON.parse(userDataJSON);
+            console.log(userData.sem);
+
+            document.getElementById("regno").value = userData.regno;
+            document.getElementById("name").value = userData.name;
+            document.getElementById("dpmt").value = userData.dpmt;
+            document.getElementById("year").value = userData.year;
+            document.getElementById("sec").value = userData.sec;
+            document.getElementById("semester").value = userData.sem;
+            document.getElementById("academicYear").value = userData.academicYear;
+            document.getElementById("mentor").value = userData.mentor;
+            document.getElementById("email").value = userData.email;
+            document.getElementById("phone").value = userData.phone;
+            document.getElementById("claimed").value = userData.claimed;
+        });
+    </script>
+    <script src="./formHandlers.js"></script>
+    <script src="./HeaderFooterManager.js"></script>
+</body>
+
+</html>
