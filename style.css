@@ -160,4 +160,9 @@ a.sidebar-link:hover {
         margin-left: 6.8%;
         /* Adjust the left margin as needed */
     }
+
+    .custom-margin-list {
+        margin-left: 9%;
+        /* Adjust the left margin as needed */
+    }
 }

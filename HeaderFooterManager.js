@@ -62,7 +62,7 @@ class SpecialHeader extends HTMLElement {
 
                     <!-- Submission -->
                     <li class="sidebar-item">
-                        <a href="activities.html" class="sidebar-link">
+                        <a href="submission.html" class="sidebar-link">
                             <i class="" style="font-size: 1.15rem; font-weight: 600px;"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-ui-checks-grid" viewBox="0 0 16 16">
