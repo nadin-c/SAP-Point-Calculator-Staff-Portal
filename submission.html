@@ -5,19 +5,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
+    <title>Submission</title>
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="./HeaderFooterManager.js"></script>
+    <!-- Bootstrap 5.3 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap5.css">
 </head>
 
 <body>
     <special-header></special-header>
 
+    <div class="container p-3" style="margin-left: 6.8%;">
+        <table id="userTable" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>eventType</th>
+                    <th>collegeName</th>
+                    <th>topic</th>
+                    <th>pts</th>
+                    <th>status</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>eventType</th>
+                    <th>collegeName</th>
+                    <th>topic</th>
+                    <th>pts</th>
+                    <th>status</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 
-    <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="./HeaderFooterManager.js"></script>
+    <!-- Bootstrap 5.3 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+        defer></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js" defer></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js" defer></script>
+
+    <script src="./HeaderFooterManager.js" defer></script>
+
+    <script>
+        async function getData() {
+            const records = await fetch('https://dummyjson.com/users');
+            const data = await records.json(); // Await the response and parse JSON
+
+            let tab = '';
+            data.users.forEach(function (user) {
+                tab += `<tr>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.username}</td>
+                    <td>${user.age}</td>
+                    <td>${user.password}</td>
+                </tr>`;
+            });
+            document.getElementById('tbody').innerHTML = tab;
+
+            // Initialize DataTables with the modified data
+            $('#userTable').DataTable({
+                "data": data.users,
+                "columns": [
+                    { "data": 'firstName' },
+                    { "data": 'lastName' },
+                    { "data": 'username' },
+                    { "data": 'age' },
+                    { "data": 'password' }
+                ]
+            });
+        }
+
+        // Call getData() function when the page loads
+        window.onload = getData;
+    </script>
 </body>
 
 </html>
