@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
 ::after,
 ::before {
     box-sizing: border-box;
@@ -49,7 +48,7 @@ body {
     min-width: 70px;
     z-index: 1000;
     transition: all .25s ease-in-out;
-    background-color: #004D40;
+    background-color: #007bff;
     display: flex;
     flex-direction: column;
     padding-bottom: 100%;
@@ -155,12 +154,10 @@ a.sidebar-link:hover {
         margin-left: 18%;
         /* Adjust the left margin as needed */
     }
-
     .custom-margin-left-content {
         margin-left: 6.8%;
         /* Adjust the left margin as needed */
     }
-
     .custom-margin-list {
         margin-left: 9%;
         /* Adjust the left margin as needed */
