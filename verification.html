@@ -38,24 +38,39 @@
                             <p class="mb-1">Topic: Entrepreneurship in the Digital Age</p>
                             <p class="mb-1">Prize: 1st</p>
                         </div>
+
                         <!-- Column for Buttons -->
                         <div
                             class="col-md-3 mt-3 mt-md-0 d-flex justify-content-md-end justify-content-center align-items-center">
-                            <button class="btn btn-success me-2" type="button">
-                                <i class="bi bi-check-lg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                        <path
-                                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
-                                    </svg></i>
-                            </button>
-                            <button class="btn btn-danger" type="button">
-                                <i class="bi bi-x-lg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                        <path
-                                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                                    </svg></i>
-                            </button>
+                            <button class="btn btn-primary btn-sm me-2" type="button">Edit</button>
+                            <button class="btn btn-success btn-lg me-2" type="button">Submit</button>
+                            <button class="btn btn-danger btn-sm" type="button">Delete</button>
                         </div>
+
+
+                        <!-- Edit Form (hidden by default) -->
+                        <div class="col-md-12 mt-3 edit-form" style="display: none;">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="presentationName" class="form-label">Paper Presentation Name</label>
+                                    <input type="text" class="form-control" id="presentationName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input type="text" class="form-control" id="date">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="topic" class="form-label">Topic</label>
+                                    <input type="text" class="form-control" id="topic">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="prize" class="form-label">Prize</label>
+                                    <input type="text" class="form-control" id="prize">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+
                     </div>
                 </li>
                 <!-- Add more list items as needed -->
@@ -63,7 +78,42 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const editButton = document.querySelector('.edit-button');
+            const editForm = document.querySelector('.edit-form');
+            const presentationNameInput = document.getElementById('presentationName');
+            const dateInput = document.getElementById('date');
+            const topicInput = document.getElementById('topic');
+            const prizeInput = document.getElementById('prize');
+            const form = document.querySelector('.edit-form form');
 
+            editButton.addEventListener('click', function () {
+                // Show edit form
+                editForm.style.display = 'block';
+
+                // Populate input fields with existing content
+                presentationNameInput.value = document.querySelector('h5').innerText;
+                dateInput.value = document.querySelector('p:nth-of-type(2)').innerText.split(': ')[1];
+                topicInput.value = document.querySelector('p:nth-of-type(3)').innerText.split(': ')[1];
+                prizeInput.value = document.querySelector('p:nth-of-type(4)').innerText.split(': ')[1];
+            });
+
+            form.addEventListener('submit', function (event) {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Update content with new values
+                document.querySelector('h5').innerText = presentationNameInput.value;
+                document.querySelector('p:nth-of-type(2)').innerText = 'Date: ' + dateInput.value;
+                document.querySelector('p:nth-of-type(3)').innerText = 'Topic: ' + topicInput.value;
+                document.querySelector('p:nth-of-type(4)').innerText = 'Prize: ' + prizeInput.value;
+
+                // Hide edit form after submitting
+                editForm.style.display = 'none';
+            });
+        });
+    </script>
 
     <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="./HeaderFooterManager.js"></script>

@@ -20,22 +20,22 @@
         <table id="userTable" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>eventType</th>
-                    <th>collegeName</th>
-                    <th>topic</th>
-                    <th>pts</th>
-                    <th>status</th>
+                    <th>Register_Number</th>
+                    <th>Name</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>Submissions</th>
                 </tr>
             </thead>
             <tbody id="tbody">
             </tbody>
             <tfoot>
                 <tr>
-                    <th>eventType</th>
-                    <th>collegeName</th>
-                    <th>topic</th>
-                    <th>pts</th>
-                    <th>status</th>
+                    <th>Register_Number</th>
+                    <th>Name</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>Submissions</th>
                 </tr>
             </tfoot>
         </table>
@@ -50,39 +50,37 @@
 
     <script src="./HeaderFooterManager.js" defer></script>
 
+    <!-- Updated getData function to use correct URL -->
     <script>
         async function getData() {
-            const records = await fetch('https://dummyjson.com/users');
-            const data = await records.json(); // Await the response and parse JSON
+            try {
+                const response = await fetch('http://localhost:3001/students');
+                const data = await response.json();
 
-            let tab = '';
-            data.users.forEach(function (user) {
-                tab += `<tr>
-                    <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
-                    <td>${user.username}</td>
-                    <td>${user.age}</td>
-                    <td>${user.password}</td>
+                let tab = '';
+                data.users.forEach(function (student) {
+                    tab += `<tr>
+                    <td>${student.rollNumber}</td>
+                    <td>${student.name}</td>
+                    <td>${student.semester}</td>
+                    <td>${student.academicYear}</td>
+                    <td><a href="#">Submissions</a></td> <!-- Add your status logic here -->
                 </tr>`;
-            });
-            document.getElementById('tbody').innerHTML = tab;
+                });
+                document.getElementById('tbody').innerHTML = tab;
 
-            // Initialize DataTables with the modified data
-            $('#userTable').DataTable({
-                "data": data.users,
-                "columns": [
-                    { "data": 'firstName' },
-                    { "data": 'lastName' },
-                    { "data": 'username' },
-                    { "data": 'age' },
-                    { "data": 'password' }
-                ]
-            });
+                // Initialize DataTables with the modified data
+                $('#userTable').DataTable();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
         }
 
         // Call getData() function when the page loads
         window.onload = getData;
     </script>
+
+
 </body>
 
 </html>
